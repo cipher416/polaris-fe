@@ -3,6 +3,7 @@ import Navbar from "./navbar";
 import { initJuno } from "@junobuild/core";
 import { AuthProvider } from "../providers/authprovider";
 import { ColorModeProvider, ColorModeScript } from "@kobalte/core";
+import { ToastList, ToastRegion } from "./toast";
 
 export default function Layout({ children }: { children: JSX.Element }) {
   createEffect(async () => {
@@ -14,11 +15,14 @@ export default function Layout({ children }: { children: JSX.Element }) {
   return (
     <AuthProvider>
       <ColorModeProvider>
-        <div>
-          <ColorModeScript />
-          <Navbar />
-          {children}
-        </div>
+        <ToastRegion>
+          <div>
+            <ToastList />
+            <ColorModeScript />
+            <Navbar />
+            {children}
+          </div>
+        </ToastRegion>
       </ColorModeProvider>
     </AuthProvider>
   );

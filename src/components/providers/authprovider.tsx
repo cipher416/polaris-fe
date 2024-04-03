@@ -7,6 +7,15 @@ import {
   type Accessor,
   type JSX,
 } from "solid-js";
+import { toaster } from "@kobalte/core";
+import { Button } from "@/components/ui/button";
+import {
+  Toast,
+  ToastContent,
+  ToastDescription,
+  ToastProgress,
+  ToastTitle,
+} from "@/components/ui/toast";
 
 export interface AuthContextType {
   isAuthenticated: Accessor<boolean>;
