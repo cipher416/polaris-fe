@@ -20,6 +20,9 @@ dependencies:
   '@kobalte/core':
     specifier: ^0.12.6
     version: 0.12.6(solid-js@1.8.16)
+  '@tanstack/solid-query':
+    specifier: ^5.28.9
+    version: 5.28.9(solid-js@1.8.16)
   astro:
     specifier: ^4.5.12
     version: 4.5.12(typescript@5.4.3)
@@ -1339,6 +1342,19 @@ packages:
     resolution: {integrity: sha512-lruDGw3pnfM3wmZHeW7JuhkGQaJjPyiKjxeGhdmfoOT53Ic9qb5JLDNaK2HUdl1zLDeX28H221UvKjfdvSLVMg==}
     dependencies:
       tslib: 2.6.2
+    dev: false
+
+  /@tanstack/query-core@5.28.9:
+    resolution: {integrity: sha512-hNlfCiqZevr3GRVPXS3MhaGW5hjcxvCsIQ4q6ff7EPlvFwYZaS+0d9EIIgofnegDaU2BbCDlyURoYfRl5rmzow==}
+    dev: false
+
+  /@tanstack/solid-query@5.28.9(solid-js@1.8.16):
+    resolution: {integrity: sha512-+Mti2A/isFElft6GkVLQ9k/SyGiSFaOmbqK80P103KcO3FI74/l2dfsFY5ZrQQLL1QdrNLdvJYpLt6YN1HpuYQ==}
+    peerDependencies:
+      solid-js: ^1.6.0
+    dependencies:
+      '@tanstack/query-core': 5.28.9
+      solid-js: 1.8.16
     dev: false
 
   /@types/babel__core@7.20.5:

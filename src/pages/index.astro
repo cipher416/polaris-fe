@@ -1,13 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Home from '../components/pages/Home.tsx';
 import '@/styles/global.css';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<Home />
-	</main>
-</Layout>
-
+<BaseLayout>
+		<Home client:only="solid"/>
+</BaseLayout>
 

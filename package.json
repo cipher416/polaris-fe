@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@junobuild/core": "^0.0.48",
     "@kobalte/core": "^0.12.6",
+    "@tanstack/solid-query": "^5.28.9",
     "astro": "^4.5.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
