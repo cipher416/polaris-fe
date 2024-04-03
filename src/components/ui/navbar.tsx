@@ -15,8 +15,8 @@ export default function Navbar() {
   const auth = useAuth();
 
   createEffect(() => {
-    console.log(auth.state());
-  }, [auth.state]);
+    console.log(auth.isAuthenticated());
+  }, [auth.isAuthenticated]);
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function Navbar() {
           {routes.map((route) => (
             <MenuItems {...route} />
           ))}
-          {auth.state() ? (
+          {auth.isAuthenticated() ? (
             <Button
               onClick={async () => {
                 await auth.logout();

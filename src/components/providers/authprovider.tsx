@@ -9,7 +9,7 @@ import {
 } from "solid-js";
 
 export interface AuthContextType {
-  state: Accessor<boolean>;
+  isAuthenticated: Accessor<boolean>;
   login: () => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -25,29 +25,24 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = (props: { children: JSX.Element }) => {
-  const [state, setState] = createSignal(false);
+  const [isAuthenticated, setIsAuthenticated] = createSignal(false);
 
   const login = async () => {
     await signIn();
-    const user = authSubscribe((user) => {
-      setState(!!user);
-      console.log(user);
-    });
   };
   const logout = async () => {
     await signOut();
   };
 
   const store = {
-    state,
+    isAuthenticated,
     login,
     logout,
   };
 
   createEffect(() => {
     authSubscribe((user) => {
-      console.log(!!user);
-      setState(!!user);
+      setIsAuthenticated(!!user);
     });
   });
 
