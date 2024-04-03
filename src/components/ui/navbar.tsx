@@ -3,6 +3,7 @@ import type { MenuItemProps } from "./menuitems";
 import MenuItems from "./menuitems";
 import { useAuth } from "../providers/authprovider";
 import { createEffect } from "solid-js";
+import ModeToggle from "./themeswitch";
 
 const routes: MenuItemProps[] = [
   { href: "/", label: "Dashboard" },
@@ -12,11 +13,11 @@ const routes: MenuItemProps[] = [
 ];
 
 export default function Navbar() {
-  const auth = useAuth();
+  const { isAuthenticated, login, logout } = useAuth();
 
   createEffect(() => {
-    console.log(auth.isAuthenticated());
-  }, [auth.isAuthenticated]);
+    console.log(isAuthenticated());
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -28,10 +29,11 @@ export default function Navbar() {
           {routes.map((route) => (
             <MenuItems {...route} />
           ))}
-          {auth.isAuthenticated() ? (
+          <ModeToggle />
+          {isAuthenticated() ? (
             <Button
               onClick={async () => {
-                await auth.logout();
+                await logout();
               }}
             >
               Sign Out
@@ -39,7 +41,7 @@ export default function Navbar() {
           ) : (
             <Button
               onClick={async () => {
-                await auth.login();
+                await login();
               }}
             >
               Sign In
