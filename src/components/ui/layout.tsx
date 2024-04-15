@@ -15,14 +15,14 @@ export default function Layout({ children }: { children: JSX.Element }) {
   return (
     <AuthProvider>
       <ColorModeProvider>
-        <ToastRegion>
-          <div>
+        <div>
+          <ColorModeScript />
+          <Navbar />
+          {children}
+          <ToastRegion>
             <ToastList />
-            <ColorModeScript />
-            <Navbar />
-            {children}
-          </div>
-        </ToastRegion>
+          </ToastRegion>
+        </div>
       </ColorModeProvider>
     </AuthProvider>
   );
