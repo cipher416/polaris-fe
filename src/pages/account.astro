@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AccountPage from '../components/pages/AccountPage.tsx';
+import '@/styles/global.css';
+---
+
+<BaseLayout>
+		<AccountPage client:only="solid-js" />
+</BaseLayout>
+

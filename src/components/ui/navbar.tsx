@@ -13,10 +13,10 @@ const routes: MenuItemProps[] = [
 ];
 
 export default function Navbar() {
-  const { isAuthenticated, login, logout } = useAuth();
+  const { isAuthenticated, login, logout, user } = useAuth();
 
   createEffect(() => {
-    console.log(isAuthenticated());
+    console.log(isAuthenticated(), user());
   }, [isAuthenticated]);
 
   return (

@@ -1,4 +1,4 @@
-import { authSubscribe, signIn, signOut } from "@junobuild/core";
+import { authSubscribe, signIn, signOut, type User } from "@junobuild/core";
 import {
   createContext,
   createEffect,
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/toast";
 
 export interface AuthContextType {
+  user: Accessor<User | null>;
   isAuthenticated: Accessor<boolean>;
   login: () => Promise<void>;
   logout: () => Promise<void>;
@@ -34,7 +35,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = (props: { children: JSX.Element }) => {
-  const [isAuthenticated, setIsAuthenticated] = createSignal(false);
+  const [user, setUser] = createSignal<User | null>(null);
 
   const login = async () => {
     await signIn();
@@ -42,16 +43,20 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
   const logout = async () => {
     await signOut();
   };
+  const isAuthenticated = () => {
+    return !!user();
+  };
 
   const store = {
-    isAuthenticated,
+    user,
     login,
     logout,
+    isAuthenticated,
   };
 
   createEffect(() => {
     authSubscribe((user) => {
-      setIsAuthenticated(!!user);
+      setUser(user);
     });
   });
 

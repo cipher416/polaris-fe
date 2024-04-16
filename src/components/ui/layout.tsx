@@ -18,7 +18,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
         <div>
           <ColorModeScript />
           <Navbar />
-          {children}
+          <div class="m-10">{children}</div>
           <ToastRegion>
             <ToastList />
           </ToastRegion>
